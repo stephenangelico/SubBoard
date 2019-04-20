@@ -25,4 +25,11 @@ with open('Subs.txt') as f:
 			new_partial.append(stripped)
 		subs.append('\n'.join(new_partial))
 
-#if __name__ == '__main__':
+# Rotation of displayed sub
+def rotate_sub():
+	for sub in subs:
+		lcd.message(sub)
+		time.sleep(10)
+
+if __name__ == '__main__':
+	rotate_sub()
