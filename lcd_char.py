@@ -1,9 +1,8 @@
-# Basic init for LCD character display with examples
-# Examples also available at https://github.com/adafruit/Adafruit_Python_CharLCD
+# Subscriber list, displayed on rotation on a character LCD
 import Adafruit_CharLCD
 import time
-import socket
 
+# Init LCD
 lcd_rs = 16
 lcd_en = 20
 lcd_d4 = 6
@@ -13,15 +12,7 @@ lcd_d7 = 26
 lcd_columns = 16
 lcd_rows = 2
 lcd_backlight = 4
-
 lcd = Adafruit_CharLCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows, lcd_backlight)
 
-# Basic message
-lcd.message("Hello, World!")
-lcd.clear()
 
-# Show IP address
-s = socket.socket()
-s.connect(("192.168.0.19", 8082))
-lcd.message(s.getsockname()[0])
-lcd.clear()
+#if __name__ == '__main__':
