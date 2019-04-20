@@ -29,6 +29,7 @@ with open('Subs.txt') as f:
 def rotate_sub():
 	while True:
 		for sub in subs:
+			#TODO: Horizontally scroll long names?
 			lcd.clear()
 			lcd.message(sub)
 			time.sleep(3)
