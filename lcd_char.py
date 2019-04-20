@@ -28,8 +28,9 @@ with open('Subs.txt') as f:
 # Rotation of displayed sub
 def rotate_sub():
 	for sub in subs:
+		lcd.clear()
 		lcd.message(sub)
-		time.sleep(10)
+		time.sleep(3)
 
 if __name__ == '__main__':
 	rotate_sub()
