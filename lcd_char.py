@@ -53,7 +53,7 @@ def rotate_sub():
 					lcd.message(first_line + "\n" + second_line)
 					time.sleep(0.1)
 				try:
-					time.sleep(5 - (range(maxlen) * 0.1))
+					time.sleep(5 - (maxlen * 0.1))
 				except ValueError:
 					time.sleep(1) # Probably scrolled for longer than 5 seconds
 			else:
