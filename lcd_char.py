@@ -34,7 +34,7 @@ def rotate_sub():
 			first_line = sub[0]
 			second_line = sub[1]
 			lcd.message(first_line + "\n" + second_line)
-			if len(first_line) > lcd_columns or if len(second_line) > lcd_columns:
+			if len(first_line) > lcd_columns or len(second_line) > lcd_columns:
 				first_line += " "
 				second_line += " "
 				for frame in range(max(len(first_line), len(second_line))):
