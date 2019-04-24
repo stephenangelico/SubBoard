@@ -23,16 +23,29 @@ with open('Subs.txt') as f:
 		for s in partial_lines:
 			stripped = s.strip()
 			new_partial.append(stripped)
-		subs.append('\n'.join(new_partial))
+		subs.append(new_partial)
 
 # Rotation of displayed sub
 def rotate_sub():
 	while True:
 		for sub in subs:
-			#TODO: Horizontally scroll long names?
 			lcd.clear()
-			lcd.message(sub)
-			time.sleep(3)
+			#TODO: Horizontally scroll long names?
+			first_line = sub[0]
+			second_line = sub[1]
+			lcd.message(first_line + "\n" + second_line)
+			if len(first_line) > lcd_columns or if len(second_line) > lcd_columns:
+				first_line += " "
+				second_line += " "
+				for frame in range(max(len(first_line), len(second_line))):
+					if len(first_line) > lcd_columns:
+						first_line = first_line[1:] + first_line[0]
+					if len(second_line) > lcd_columns:
+						second_line = second_line[1:] + second_line[0]
+					lcd.clear()
+					lcd.message(first_line + "\n" + second_line)
+					time.sleep(0.1)
+			time.sleep(5)
 
 if __name__ == '__main__':
 	try:
