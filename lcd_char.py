@@ -30,17 +30,21 @@ def rotate_sub():
 	while True:
 		for sub in subs:
 			lcd.clear()
-			#TODO: Horizontally scroll long names?
 			first_line = sub[0]
 			try:
 				second_line = sub[1]
 			except IndexError:
 				second_line = "" # There is no second line
 			lcd.message(first_line + "\n" + second_line)
-			if len(first_line) > lcd_columns or len(second_line) > lcd_columns:
-				first_line += " "
-				second_line += " "
-				for frame in range(max(len(first_line), len(second_line))):
+			if len(first_line) > lcd_columns or len(second_line) > lcd_columns: # Is EITHER line too wide
+				maxlen = max(len(first_line), len(second_line)) + 1
+				# Pad lines as necessary, including 1 space for scrolled lines
+				if len(first_line) > lcd_columns:
+					first_line = first_line.ljust(maxlen)
+				if len(second_line) > lcd_columns:
+					second_line = second_line.ljust(maxlen)
+				# Build 'frames' for scrolled messages
+				for frame in range(maxlen):
 					if len(first_line) > lcd_columns:
 						first_line = first_line[1:] + first_line[0]
 					if len(second_line) > lcd_columns:
