@@ -35,4 +35,7 @@ def rotate_sub():
 			time.sleep(3)
 
 if __name__ == '__main__':
-	rotate_sub()
+	try:
+		rotate_sub()
+	finally:
+		lcd.clear()
