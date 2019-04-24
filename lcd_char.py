@@ -32,7 +32,10 @@ def rotate_sub():
 			lcd.clear()
 			#TODO: Horizontally scroll long names?
 			first_line = sub[0]
-			second_line = sub[1]
+			try:
+				second_line = sub[1]
+			except IndexError:
+				second_line = "" # There is no second line
 			lcd.message(first_line + "\n" + second_line)
 			if len(first_line) > lcd_columns or len(second_line) > lcd_columns:
 				first_line += " "
