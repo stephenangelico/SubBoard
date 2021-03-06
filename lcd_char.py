@@ -11,7 +11,8 @@ lcd_d6 = 19
 lcd_d7 = 26
 lcd_columns = 16
 lcd_rows = 2
-lcd_backlight = 4
+lcd_backlight = 4 # This is useless as backlight is powered from +5V.
+# TODO: power display from GPIO 21 so display is dark until needed.
 lcd = Adafruit_CharLCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows, lcd_backlight)
 lcd.blink(False)
 
