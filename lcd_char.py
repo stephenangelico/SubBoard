@@ -41,7 +41,7 @@ def rotate_sub():
 				second_line = sub[1]
 			except IndexError:
 				second_line = "" # There is no second line
-			lcd.message(first_line + "\n" + second_line)
+			lcd.message = first_line + "\n" + second_line
 			if len(first_line) > lcd_columns or len(second_line) > lcd_columns: # Is EITHER line too wide
 				maxlen = max(len(first_line), len(second_line)) + 1
 				# Pad lines as necessary, including 1 space for scrolled lines
@@ -56,7 +56,7 @@ def rotate_sub():
 					if len(second_line) > lcd_columns:
 						second_line = second_line[1:] + second_line[0]
 					lcd.clear()
-					lcd.message(first_line + "\n" + second_line)
+					lcd.message = first_line + "\n" + second_line
 					time.sleep(0.1)
 				try:
 					time.sleep(5 - (maxlen * 0.1))
