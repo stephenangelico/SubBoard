@@ -1,19 +1,22 @@
 # Subscriber list, displayed on rotation on a character LCD
-import Adafruit_CharLCD
+import board
+import digitalio
+import adafruit_character_lcd.character_lcd as character_lcd
 import time
 
 # Init LCD
-lcd_rs = 16
-lcd_en = 20
-lcd_d4 = 6
-lcd_d5 = 13
-lcd_d6 = 19
-lcd_d7 = 26
+lcd_rs = digitalio.DigitalInOut(board.D16)
+lcd_en = digitalio.DigitalInOut(board.D20)
+lcd_d4 = digitalio.DigitalInOut(board.D6)
+lcd_d5 = digitalio.DigitalInOut(board.D13)
+lcd_d6 = digitalio.DigitalInOut(board.D19)
+lcd_d7 = digitalio.DigitalInOut(board.D26)
 lcd_columns = 16
 lcd_rows = 2
-lcd_backlight = 4 # This is useless as backlight is powered from +5V.
-# TODO: power display from GPIO 21 so display is dark until needed.
-lcd = Adafruit_CharLCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows, lcd_backlight)
+lcd_backlight = digitalio.DigitalInOut(board.D21) # This is useless as backlight is powered from +5V.
+# TODO: Update library to adafruit_character_lcd.character_lcd from adafruit-circuitpython-charlcd
+# TODO: power display from GPIO 21 so display is dark until needed. Requires lcd.backlight = True which is only supported on new library.
+lcd = character_lcd.Character_LCD_Mono(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows, lcd_backlight)
 lcd.blink(False)
 
 # Load sub data

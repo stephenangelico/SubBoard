@@ -1,1 +1,1 @@
-Adafruit-CharLCD
+adafruit-circuitpython-charlcd
